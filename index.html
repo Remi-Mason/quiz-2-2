@@ -583,7 +583,12 @@ transform: translateY(-240px) scale(0.95);
           font-size: 28px !important;
         }
       }
-    }
+      @media (max-width: 480px) {
+  #quiz-container {
+    max-height: 80vh; /* 80% de la hauteur de l'écran */
+    overflow-y: auto; /* Ajoute une barre de défilement verticale si nécessaire */
+  }
+}
   </style>
 </head>
 <body>
@@ -1109,6 +1114,17 @@ transform: translateY(-240px) scale(0.95);
     ]
   }
     ];
+	    // Fonction de mélange (shuffle) avec l'algorithme Fisher-Yates
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// Mélange des questions
+shuffleArray(quizData);
+    
     
     let currentQuestion = 0;
     let score = 0;
